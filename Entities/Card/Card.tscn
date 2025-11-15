@@ -1,18 +1,20 @@
-[gd_scene load_steps=4 format=3 uid="uid://dghmsxbjgudmr"]
+[gd_scene load_steps=5 format=3 uid="uid://dghmsxbjgudmr"]
 
 [ext_resource type="Script" uid="uid://cilmv0p4gtit5" path="res://Entities/Card/card.gd" id="1_mfup4"]
 [ext_resource type="Texture2D" uid="uid://qdiq2kwasyql" path="res://Assets/2_of_clubs.svg" id="2_hc67x"]
+[ext_resource type="PackedScene" uid="uid://dgabs7y7no2i1" path="res://Components/DraggableComponent/DraggableComponent.tscn" id="3_x0t18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc67x"]
 size = Vector2(222, 322)
 
-[node name="Card" type="Node2D"]
+[node name="Card" type="Area2D"]
 script = ExtResource("1_mfup4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
 texture = ExtResource("2_hc67x")
 
-[node name="Area2D" type="Area2D" parent="."]
+[node name="DraggableComponent" parent="." instance=ExtResource("3_x0t18")]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(1, 0)
 shape = SubResource("RectangleShape2D_hc67x")

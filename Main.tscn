@@ -5,3 +5,7 @@
 [node name="Main" type="Node2D"]
 
 [node name="Card" parent="." instance=ExtResource("1_glv2v")]
+position = Vector2(338, 186)
+
+[node name="Card2" parent="." instance=ExtResource("1_glv2v")]
+position = Vector2(281, 141)
