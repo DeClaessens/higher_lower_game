@@ -1,0 +1,19 @@
+[gd_scene load_steps=4 format=3 uid="uid://ufvqbdnu0kh0"]
+
+[ext_resource type="Texture2D" uid="uid://5p4yiq4uhygx" path="res://Assets/cardBack_green1.png" id="2_2ni18"]
+[ext_resource type="PackedScene" uid="uid://ct5il01eim0lk" path="res://Components/SlotComponent/SlotComponent.tscn" id="2_b0qkd"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u177x"]
+size = Vector2(141.66666, 191.66666)
+
+[node name="Slot" type="Area2D"]
+scale = Vector2(0.24000001, 0.24000001)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_u177x")
+debug_color = Color(0.80820227, 0.22153303, 0.85834146, 0.41960785)
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture = ExtResource("2_2ni18")
+
+[node name="SlotComponent" parent="." instance=ExtResource("2_b0qkd")]

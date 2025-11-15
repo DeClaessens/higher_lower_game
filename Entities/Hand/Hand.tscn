@@ -1,0 +1,3 @@
+[gd_scene format=3 uid="uid://dpsba7yjgssvl"]
+
+[node name="Hand" type="Node2D"]
