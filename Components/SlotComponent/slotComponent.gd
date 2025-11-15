@@ -16,6 +16,7 @@ func _ready() -> void:
 	# Connect automatically if parent is Area2D
 	if consumer is Area2D:
 		consumer.add_to_group("slots")
+		consumer.set_meta("slot_handler", self)
 	else:
 		push_warning("SlotComponent: Consumer (Parent) is not an Area2D. No slot detection.")
 
