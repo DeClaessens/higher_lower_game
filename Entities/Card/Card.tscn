@@ -1,7 +1,6 @@
-[gd_scene load_steps=5 format=3 uid="uid://dghmsxbjgudmr"]
+[gd_scene load_steps=4 format=3 uid="uid://dghmsxbjgudmr"]
 
 [ext_resource type="Script" uid="uid://cilmv0p4gtit5" path="res://Entities/Card/card.gd" id="1_mfup4"]
-[ext_resource type="Texture2D" uid="uid://nw6gh21d3qqt" path="res://Assets/cardClubs10.png" id="2_x0t18"]
 [ext_resource type="PackedScene" uid="uid://dgabs7y7no2i1" path="res://Components/DraggableComponent/DraggableComponent.tscn" id="3_x0t18"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_hc67x"]
@@ -11,7 +10,6 @@ size = Vector2(140, 190)
 script = ExtResource("1_mfup4")
 
 [node name="Sprite2D" type="Sprite2D" parent="."]
-texture = ExtResource("2_x0t18")
 
 [node name="DraggableComponent" parent="." instance=ExtResource("3_x0t18")]
 

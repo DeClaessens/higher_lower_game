@@ -1,3 +1,16 @@
-[gd_scene format=3 uid="uid://dpsba7yjgssvl"]
+[gd_scene load_steps=4 format=3 uid="uid://dpsba7yjgssvl"]
 
-[node name="Hand" type="Node2D"]
+[ext_resource type="Script" uid="uid://dgvy6a0asyveg" path="res://Entities/Hand/hand.gd" id="1_efdw2"]
+[ext_resource type="PackedScene" uid="uid://ct5il01eim0lk" path="res://Components/SlotComponent/SlotComponent.tscn" id="1_imwm6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_imwm6"]
+size = Vector2(1030, 296)
+
+[node name="Hand" type="Area2D"]
+script = ExtResource("1_efdw2")
+
+[node name="SlotComponent" parent="." instance=ExtResource("1_imwm6")]
+max_allowed_nodes = 2
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_imwm6")

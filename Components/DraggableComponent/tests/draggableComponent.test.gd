@@ -10,9 +10,7 @@ func before_each():
 	collisionShape.shape = RectangleShape2D.new()
 	collisionShape.shape.size = Vector2(50,50)
 	card.add_child(collisionShape)
-	print('hello')
 	draggable = preload("res://Components/DraggableComponent/draggableComponent.tscn").instantiate()
-	print(draggable)
 	card.add_child(draggable)
 	
 	get_tree().get_root().add_child(card)

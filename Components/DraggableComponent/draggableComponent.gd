@@ -21,8 +21,6 @@ func _on_area_input_event(_viewport, event, _shape_idx):
 	if !can_drag:
 		return
 	if event is InputEventMouseButton and event.button_index == MOUSE_BUTTON_LEFT:
-		print(consumer, consumer.get_index())
-		
 		if event.pressed:
 			dragging = true
 			offset = consumer.global_position - event.global_position

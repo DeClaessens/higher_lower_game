@@ -17,3 +17,4 @@ debug_color = Color(0.80820227, 0.22153303, 0.85834146, 0.41960785)
 texture = ExtResource("2_2ni18")
 
 [node name="SlotComponent" parent="." instance=ExtResource("2_b0qkd")]
+locks_nodes = true

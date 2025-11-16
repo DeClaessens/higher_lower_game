@@ -15,6 +15,11 @@ run/main_scene="uid://budxylqe7vgvt"
 config/features=PackedStringArray("4.5", "Forward Plus")
 config/icon="res://icon.svg"
 
+[autoload]
+
+Globals="*res://AutoLoads/globals.gd"
+SignalBus="*res://AutoLoads/signal_bus.gd"
+
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/gut/plugin.cfg")

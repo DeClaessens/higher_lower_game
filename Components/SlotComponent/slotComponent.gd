@@ -4,12 +4,9 @@ extends Node2D
 class_name SlotComponent
 
 @export var snap_offset := Vector2.ZERO
+@export var max_allowed_nodes: int = 1
+@export var locks_nodes: bool = false
 @onready var consumer: Area2D = get_parent()
-
-var held_node: Area2D = null
-
-signal captured_by_slot(slot: Area2D, target: Area2D)
-signal released_by_slot(slot: Area2D, target: Area2D)
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -20,16 +17,18 @@ func _ready() -> void:
 	else:
 		push_warning("SlotComponent: Consumer (Parent) is not an Area2D. No slot detection.")
 
+func can_accept() -> bool:
+	return self.get_children().size() >= max_allowed_nodes
+
+
 func accept_area2d_node(node: Area2D) -> void:
-	# If a node is currently occupying the slot, send a release signal
-	# the node is responsible for returning to its home slot
-	if held_node:
-		released_by_slot.emit(consumer, held_node)
-	
+	if can_accept():
+		SignalBus.slot_denied.emit(consumer, node)
+		return
 	# Set the new node as a child of the slot + reposition
-	held_node = node
-	node.reparent(consumer)
+	node.reparent(self)
 	node.position = snap_offset
+	print("accepted node: ", node)
 
 	# Emit a signal to the node that it has been captured by the slot
-	captured_by_slot.emit(consumer, node)
+	SignalBus.slot_captured.emit(consumer, node, true)

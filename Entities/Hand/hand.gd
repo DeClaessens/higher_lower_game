@@ -1,11 +1,14 @@
-extends Node
+extends Area2D
+class_name Hand
 
+@onready var slot: SlotComponent = $SlotComponent
 
-# Called when the node enters the scene tree for the first time.
+var cards: Array[Card] = []
+var max_cards: int = 3
+
 func _ready() -> void:
-	pass # Replace with function body.
+	slot.max_allowed_nodes = max_cards
 
-
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func add_card(card: Card) -> void:
+	cards.append(card)
+	slot.accept_area2d_node(card)
