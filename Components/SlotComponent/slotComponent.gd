@@ -4,7 +4,7 @@ extends Node2D
 class_name SlotComponent
 
 @export var snap_offset := Vector2.ZERO
-@export var max_allowed_nodes: int = 1
+@export var max_allowed_nodes: int = 3
 @export var locks_nodes: bool = false
 @onready var consumer: Area2D = get_parent()
 
@@ -31,4 +31,4 @@ func accept_area2d_node(node: Area2D) -> void:
 	print("accepted node: ", node)
 
 	# Emit a signal to the node that it has been captured by the slot
-	SignalBus.slot_captured.emit(consumer, node, true)
+	SignalBus.slot_captured.emit(consumer, node, locks_nodes)

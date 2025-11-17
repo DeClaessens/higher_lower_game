@@ -3,7 +3,9 @@ extends Node2D
 @onready var hand: Hand = $Hand
 
 var CardScene: PackedScene = preload("res://Entities/Card/Card.tscn")
+var HandScene: PackedScene = preload("res://Entities/Hand/Hand.tscn")
 var deck: Array[Card] = []
+var enemy_hand: Hand = null
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	SignalBus.card_played.connect(_on_card_played)
@@ -14,10 +16,8 @@ func _ready() -> void:
 	vp.physics_object_picking_sort = true
 
 	initialize_deck()
-	var drawnCards = draw_cards(3)
-	for card in drawnCards:
-		add_child(card)
-		hand.add_card(card)
+	initialize_player_hand()
+	initialize_enemy_hand()
 
 func initialize_deck() -> void:
 	for suit in Globals.SuitsEnum.values():
@@ -27,6 +27,23 @@ func initialize_deck() -> void:
 			deck.append(card)
 	
 	deck.shuffle()
+	
+func initialize_player_hand():
+	var drawnCards = draw_cards(3)
+	for card in drawnCards:
+		add_child(card)
+		hand.add_card(card)
+		
+func initialize_enemy_hand():
+	enemy_hand = HandScene.instantiate()
+	enemy_hand.interactible = false
+	enemy_hand.name = 'EnemyHand'
+	add_child(enemy_hand)
+	
+	var drawnCards = draw_cards(3)
+	for card in drawnCards:
+		add_child(card)
+		enemy_hand.add_card(card)
 
 func draw_cards(amount: int) -> Array[Card]:
 	var cards: Array[Card] = []
@@ -36,11 +53,11 @@ func draw_cards(amount: int) -> Array[Card]:
 
 
 func _on_card_played(card: Card, slot_area: Area2D) -> void:
-	print("Card played: ", card)
-	var drawnCard = draw_cards(1)[0]
-	print(card.name, drawnCard.name)
-	if card.rank > drawnCard.rank:
+	var enemyCard = enemy_hand.random_card()
+	enemy_hand.remove_card(enemyCard)
+	enemyCard.queue_free()
+	
+	if card.rank > enemyCard.rank:
 		print("Player wins!")
 	else:
 		print("Player loses!")
-	card.queue_free()

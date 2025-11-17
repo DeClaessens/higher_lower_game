@@ -12,4 +12,4 @@ position = Vector2(786, 177.99998)
 scale = Vector2(1.0071315, 1.0071315)
 
 [node name="Hand" parent="." instance=ExtResource("3_pe3qf")]
-position = Vector2(582, 469)
+position = Vector2(587, 650)
