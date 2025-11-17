@@ -1,19 +1,23 @@
-# higher_lower_game
-TODO:
-	
-	Hand -> Holds many Cards
-		Position given to Card based on index in hand
-	Deck -> Holds all undrawn cards
-	
-	GameManager -> Interactions between states
-		Draw(x) -> Draw from a Deck to a Hand
+# Higher / Lower
+
+## Description
+First 'Game' in my collection of 'Learning Godot & Game Dev' creations
+
+This game is buggy, but functional.
+
+First, we create a Deck.
+We assign a hand for the player and a hand for the enemy.
+
+The player can play 1 of his cards versus a random one of the enemy
+
+If it's higher, you win, if it's lower, you lose.
 
 
-Game:
-	Game draws a card from the deck and places it upside down in the Play Area
-	Player has a hand of 3 cards, he can play a card from his hand to the Play Area
-	When a card is played, the initial card is revealed.
-	If the card is higher, the player wins score
-	If it's lower, the player loses score
-
-That's it for our first 'game'
+## Lessons Learned
+- Godot Basic
+- Area2D / CollisionShape2D / Sprite2D
+- Signals (with and without SignalBus)
+- Component Architecture (SlotComponent, DraggableComponent)
+	- These 'Components' can be slotted anywhere. Are developped to be agnostic (except for having a required parent node)
+- Autoloads -> Essentially, these are 'Global' scripts that can be used anywhere without having to have a reference to it's node in the scene
+	- Have to be defined in the Project Settings -> Globals

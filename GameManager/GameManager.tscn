@@ -8,7 +8,7 @@
 script = ExtResource("1_pe3qf")
 
 [node name="Slot" parent="." instance=ExtResource("3_qmfre")]
-position = Vector2(786, 177.99998)
+position = Vector2(200.99994, 334)
 scale = Vector2(1.0071315, 1.0071315)
 
 [node name="Hand" parent="." instance=ExtResource("3_pe3qf")]

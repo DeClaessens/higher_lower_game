@@ -7,6 +7,8 @@ class_name SlotComponent
 @export var max_allowed_nodes: int = 3
 @export var locks_nodes: bool = false
 @onready var consumer: Area2D = get_parent()
+@export var card_spacing := Vector2(200, 0)
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -27,7 +29,11 @@ func accept_area2d_node(node: Area2D) -> void:
 		return
 	# Set the new node as a child of the slot + reposition
 	node.reparent(self)
-	node.position = snap_offset
+	# Determine index AFTER reparenting
+	var index := self.get_child_count() - 1
+
+	# Position = base offset + (index * spacing)
+	node.position = snap_offset + card_spacing * index
 	print("accepted node: ", node)
 
 	# Emit a signal to the node that it has been captured by the slot
